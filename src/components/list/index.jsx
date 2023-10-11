@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 import { API, graphqlOperation } from 'aws-amplify';
 import { Box, Flex, CircularProgress, Text, Center, useToast } from '@chakra-ui/react';
-import { listLists } from './../../graphql/queries';
+import { listLists } from '../../graphql/queries';
 import Item from './item';
-import { onCreateList, onDeleteList, onUpdateList } from './../../graphql/subscriptions';
+import { onCreateList, onDeleteList, onUpdateList } from '../../graphql/subscriptions';
 
 export default function ItemsContainer() {
   const [list, setList] = useState([]);

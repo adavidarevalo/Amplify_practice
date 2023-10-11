@@ -4,16 +4,18 @@ type List @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String!
   description: String
-  listItem: [ListItem]
+  imageKey: String
+  slug: String
+  listItems: [ListItem]
 }
 
-type ListItem @model @auth(rules: [{ allow: owner }]) {
+type ListItem @model @auth(rules: [{ allow: owner}]) {
   id: ID!
   title: String!
   quantity: Int
   done: Boolean
   list: List
-  actions: [Action]
+  actions: [Action] 
 }
 
 type Action @model @auth(rules: [{ allow: owner }]) {

@@ -12,7 +12,6 @@ import {
   Icon,
   createIcon,
   useColorModeValue,
-  Center,
 } from '@chakra-ui/react';
 
 export default function FamilyHelper() {

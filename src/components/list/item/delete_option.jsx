@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { API, graphqlOperation } from 'aws-amplify';
-import { deleteList } from './../../../graphql/mutations';
+import { deleteList } from '../../../graphql/mutations';
 
 export default function DeleteOption({ item }) {
   const { isOpen, onOpen, onClose } = useDisclosure();

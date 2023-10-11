@@ -3,7 +3,7 @@
 import React from 'react';
 
 import Header from '../components/header';
-import ItemsContainer from "../components/items"
+import ItemsContainer from "../components/list"
 import FamilyHelper from '../components/hero';
 import FloatingMenu from '../components/menu';
 import {

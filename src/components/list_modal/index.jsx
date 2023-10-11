@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 // import { useForm } from 'react-hook-form';
-import { API, graphqlOperation } from 'aws-amplify';
 import {
   ModalOverlay,
   Modal,
@@ -17,13 +16,12 @@ import {
   Input,
   useDisclosure,
   Box,
-  Textarea,
-  useToast
+  Textarea
 } from '@chakra-ui/react';
-import UploadImage from "./upload_image"
-import { createList, updateList } from '../../graphql/mutations';
 
-export default function ListModal({ children, item }) {
+import UploadImage from "./upload_image"
+
+export default function ListModal({ children, item, handleSave }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [fileToUpload, setFileToUpload] = useState();
 
@@ -41,7 +39,6 @@ export default function ListModal({ children, item }) {
     }
   }, [item, isOpen]);
   
-  const toast = useToast();
 
   const resetFormValues = () => {
       setFormValues({
@@ -58,48 +55,14 @@ export default function ListModal({ children, item }) {
   };
 
   const onSave = async () => {
-    try {
       onClose();
-      if (item) {
-        await API.graphql(
-          graphqlOperation(updateList, {
-            input: { ...formValues, id: item.id },
-          })
-        );
-      }
-      if (!item) {
-        await API.graphql(
-          graphqlOperation(createList, {
-            input: formValues,
-          })
-        );
-      }
+      await handleSave(fileToUpload, formValues);
       resetFormValues();
-      toast({
-        title: `List Was ${item ? 'Edited' : 'Created'}.`,
-        description: `Successful ${item ? 'Edited' : 'Created'} List`,
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
-      });
-    } catch (error) {
-      toast({
-        title: 'There was error.',
-        description: error?.message || 'Unexpected error',
-        status: 'error',
-        duration: 9000,
-        isClosable: true,
-      });
-    }
   };
 
   const handlerCancel = () => {
     resetFormValues();
     onClose();
-  };
-
-  const getSelectedFile = fileName => {
-    setFileToUpload(fileName);
   };
 
   return (
@@ -124,7 +87,7 @@ export default function ListModal({ children, item }) {
             />
             <FormControl as="form" mt={4}>
               <FormLabel as="legend">Upload Image</FormLabel>
-              <UploadImage getSelectedFile={getSelectedFile} />
+              <UploadImage getSelectedFile={setFileToUpload} item={item} />
             </FormControl>
           </ModalBody>
 

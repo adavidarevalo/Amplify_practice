@@ -7,7 +7,9 @@ export const getList = /* GraphQL */ `
       id
       title
       description
-      listItem {
+      imageKey
+      slug
+      listItems {
         id
         title
         quantity
@@ -35,6 +37,8 @@ export const listLists = /* GraphQL */ `
         id
         title
         description
+        imageKey
+        slug
         createdAt
         updatedAt
         owner
@@ -56,6 +60,8 @@ export const getListItem = /* GraphQL */ `
         id
         title
         description
+        imageKey
+        slug
         createdAt
         updatedAt
         owner
