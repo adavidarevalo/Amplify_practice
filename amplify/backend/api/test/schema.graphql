@@ -1,0 +1,23 @@
+# @format
+
+type List @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  title: String!
+  description: String
+  listItem: [ListItem]
+}
+
+type ListItem @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  title: String!
+  quantity: Int
+  done: Boolean
+  list: List
+  actions: [Action]
+}
+
+type Action @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  action: String
+  listItem: ListItem
+}
