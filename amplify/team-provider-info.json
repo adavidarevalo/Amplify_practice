@@ -15,11 +15,11 @@
       "auth": {
         "test67ed97a1": {}
       },
-      "api": {
-        "test": {}
-      },
       "storage": {
         "familyHelperBucket": {}
+      },
+      "api": {
+        "test": {}
       }
     }
   }

@@ -1,7 +1,7 @@
 /** @format */
 
-import React from 'react';
-import { Box, Button, Menu, MenuList, MenuItem, MenuButton, useToast } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Button, Menu, MenuList, MenuItem, MenuButton, useToast } from '@chakra-ui/react';
 import { DragHandleIcon, EditIcon } from '@chakra-ui/icons';
 import { API, graphqlOperation } from 'aws-amplify';
 import slugify from 'slugify';
@@ -11,7 +11,7 @@ import CreateListModal from '../../list_modal';
 import { updateList } from '../../../graphql/mutations';
 import { useS3 } from '../../../hooks/useS3';
 
-export default function ItemMenu({ item }) {
+export default function ItemMenu({ item, isHover }) {
   const toast = useToast();
   const [uploadToS3] = useS3();
 
@@ -54,28 +54,28 @@ export default function ItemMenu({ item }) {
       });
     }
   };
+
   return (
-    <Box position={'absolute'} top={'0px'} w={'full'} h={'full'} opacity={'0'} _hover={{ opacity: '1' }}>
-      <Menu>
-        <MenuButton
-          as={Button}
-          bg={'#F56565'}
-          position={'absolute'}
-          top={'10px'}
-          right={'10px'}
-          rounded={100}
-          h={'40px'}
-          w={30}
-          p={'10px'}>
-          <DragHandleIcon color={'white'} />
-        </MenuButton>
-        <MenuList>
-          <CreateListModal item={item} handleSave={handleSave}>
-            <MenuItem icon={<EditIcon />}>Edit</MenuItem>
-          </CreateListModal>
-          <DeleteOption item={item} />
-        </MenuList>
-      </Menu>
-    </Box>
+    <Menu>
+      <MenuButton
+        as={Button}
+        bg={'#F56565'}
+        position={'absolute'}
+        top={'10px'}
+        right={'10px'}
+        opacity={+isHover}
+        rounded={100}
+        h={'40px'}
+        w={30}
+        p={'10px'}>
+        <DragHandleIcon color={'white'} />
+      </MenuButton>
+      <MenuList>
+        <CreateListModal item={item} handleSave={handleSave}>
+          <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+        </CreateListModal>
+        <DeleteOption item={item} />
+      </MenuList>
+    </Menu>
   );
 }

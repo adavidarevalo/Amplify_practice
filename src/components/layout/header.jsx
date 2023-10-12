@@ -17,10 +17,12 @@ import {
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useAuthenticator } from '@aws-amplify/ui-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { signOut } = useAuthenticator();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -47,7 +49,13 @@ export default function Header() {
                   </Center>
                   <br />
                   <MenuDivider />
-                  <MenuItem onClick={() => signOut()}>Logout</MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      signOut();
+                      navigate('/');
+                    }}>
+                    Logout
+                  </MenuItem>
                 </MenuList>
               </Menu>
             </Stack>

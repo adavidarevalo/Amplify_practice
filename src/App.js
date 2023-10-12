@@ -5,6 +5,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import '@aws-amplify/ui-react/styles.css';
 import awsconfig from './aws-exports';
 import HomePage from "./pages/home"
+import AppRouter from "./routes/index.jsx"
 
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
@@ -12,11 +13,10 @@ Auth.configure(awsconfig);
 function App() {
   return (
     <ChakraProvider>
-      <HomePage/>
+      <AppRouter/>
+      {/* <HomePage/> */}
     </ChakraProvider>
   );
 }
 
-export default withAuthenticator(App, {
-  includeGreetings: true,
-});
+export default App;

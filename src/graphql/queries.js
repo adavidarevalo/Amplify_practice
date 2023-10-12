@@ -10,13 +10,7 @@ export const getList = /* GraphQL */ `
       imageKey
       slug
       listItems {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
+        nextToken
         __typename
       }
       createdAt
@@ -67,16 +61,10 @@ export const getListItem = /* GraphQL */ `
         owner
         __typename
       }
-      actions {
-        id
-        action
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
       createdAt
       updatedAt
+      listListItemsId
+      listItemListId
       owner
       __typename
     }
@@ -96,48 +84,8 @@ export const listListItems = /* GraphQL */ `
         done
         createdAt
         updatedAt
-        owner
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
-export const getAction = /* GraphQL */ `
-  query GetAction($id: ID!) {
-    getAction(id: $id) {
-      id
-      action
-      listItem {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const listActions = /* GraphQL */ `
-  query ListActions(
-    $filter: ModelActionFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listActions(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        action
-        createdAt
-        updatedAt
+        listListItemsId
+        listItemListId
         owner
         __typename
       }

@@ -1,25 +1,16 @@
-# @format
-
 type List @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String!
   description: String
   imageKey: String
   slug: String
-  listItems: [ListItem]
+  listItems: [ListItem] @hasMany
 }
 
-type ListItem @model @auth(rules: [{ allow: owner}]) {
+type ListItem @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String!
   quantity: Int
   done: Boolean
-  list: List
-  actions: [Action] 
-}
-
-type Action @model @auth(rules: [{ allow: owner }]) {
-  id: ID!
-  action: String
-  listItem: ListItem
+  list: List @hasOne
 }

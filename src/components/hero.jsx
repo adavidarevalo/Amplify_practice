@@ -13,16 +13,13 @@ import {
   createIcon,
   useColorModeValue,
 } from '@chakra-ui/react';
+import {  Link } from 'react-router-dom';
+
 
 export default function FamilyHelper() {
   return (
-    <Container 
-    maxW="7xl" 
-    minH="calc(100vh - 4rem)"
-    display={"flex"}
-    alignItems={"center"}
-    >
-      <Flex h={"full"} align={"center"}>
+    <Container maxW="7xl" minH="calc(100vh - 4rem)" display={'flex'} alignItems={'center'} overflowX={"hidden"}>
+      <Flex h={'full'} align={'center'}>
         <Stack
           align={'center'}
           spacing={{ base: 8, md: 10 }}
@@ -62,8 +59,10 @@ export default function FamilyHelper() {
                 px={6}
                 colorScheme={'red'}
                 bg={'red.400'}
-                _hover={{ bg: 'red.500' }}>
-                Get started
+                _hover={{ bg: 'red.500' }}
+                as={Link}
+                to={'/dashboard'}>
+                Go To Dashboard
               </Button>
               <Button
                 rounded={'full'}

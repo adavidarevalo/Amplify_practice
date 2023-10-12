@@ -13,13 +13,7 @@ export const onCreateList = /* GraphQL */ `
       imageKey
       slug
       listItems {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
+        nextToken
         __typename
       }
       createdAt
@@ -41,13 +35,7 @@ export const onUpdateList = /* GraphQL */ `
       imageKey
       slug
       listItems {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
+        nextToken
         __typename
       }
       createdAt
@@ -69,13 +57,7 @@ export const onDeleteList = /* GraphQL */ `
       imageKey
       slug
       listItems {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
+        nextToken
         __typename
       }
       createdAt
@@ -106,16 +88,10 @@ export const onCreateListItem = /* GraphQL */ `
         owner
         __typename
       }
-      actions {
-        id
-        action
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
       createdAt
       updatedAt
+      listListItemsId
+      listItemListId
       owner
       __typename
     }
@@ -142,16 +118,10 @@ export const onUpdateListItem = /* GraphQL */ `
         owner
         __typename
       }
-      actions {
-        id
-        action
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
       createdAt
       updatedAt
+      listListItemsId
+      listItemListId
       owner
       __typename
     }
@@ -178,91 +148,10 @@ export const onDeleteListItem = /* GraphQL */ `
         owner
         __typename
       }
-      actions {
-        id
-        action
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
       createdAt
       updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const onCreateAction = /* GraphQL */ `
-  subscription OnCreateAction(
-    $filter: ModelSubscriptionActionFilterInput
-    $owner: String
-  ) {
-    onCreateAction(filter: $filter, owner: $owner) {
-      id
-      action
-      listItem {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const onUpdateAction = /* GraphQL */ `
-  subscription OnUpdateAction(
-    $filter: ModelSubscriptionActionFilterInput
-    $owner: String
-  ) {
-    onUpdateAction(filter: $filter, owner: $owner) {
-      id
-      action
-      listItem {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const onDeleteAction = /* GraphQL */ `
-  subscription OnDeleteAction(
-    $filter: ModelSubscriptionActionFilterInput
-    $owner: String
-  ) {
-    onDeleteAction(filter: $filter, owner: $owner) {
-      id
-      action
-      listItem {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
-      createdAt
-      updatedAt
+      listListItemsId
+      listItemListId
       owner
       __typename
     }

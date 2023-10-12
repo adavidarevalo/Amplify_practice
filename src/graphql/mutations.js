@@ -13,13 +13,7 @@ export const createList = /* GraphQL */ `
       imageKey
       slug
       listItems {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
+        nextToken
         __typename
       }
       createdAt
@@ -41,13 +35,7 @@ export const updateList = /* GraphQL */ `
       imageKey
       slug
       listItems {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
+        nextToken
         __typename
       }
       createdAt
@@ -69,13 +57,7 @@ export const deleteList = /* GraphQL */ `
       imageKey
       slug
       listItems {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
+        nextToken
         __typename
       }
       createdAt
@@ -106,16 +88,10 @@ export const createListItem = /* GraphQL */ `
         owner
         __typename
       }
-      actions {
-        id
-        action
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
       createdAt
       updatedAt
+      listListItemsId
+      listItemListId
       owner
       __typename
     }
@@ -142,16 +118,10 @@ export const updateListItem = /* GraphQL */ `
         owner
         __typename
       }
-      actions {
-        id
-        action
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
       createdAt
       updatedAt
+      listListItemsId
+      listItemListId
       owner
       __typename
     }
@@ -178,91 +148,10 @@ export const deleteListItem = /* GraphQL */ `
         owner
         __typename
       }
-      actions {
-        id
-        action
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
       createdAt
       updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const createAction = /* GraphQL */ `
-  mutation CreateAction(
-    $input: CreateActionInput!
-    $condition: ModelActionConditionInput
-  ) {
-    createAction(input: $input, condition: $condition) {
-      id
-      action
-      listItem {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const updateAction = /* GraphQL */ `
-  mutation UpdateAction(
-    $input: UpdateActionInput!
-    $condition: ModelActionConditionInput
-  ) {
-    updateAction(input: $input, condition: $condition) {
-      id
-      action
-      listItem {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
-  }
-`;
-export const deleteAction = /* GraphQL */ `
-  mutation DeleteAction(
-    $input: DeleteActionInput!
-    $condition: ModelActionConditionInput
-  ) {
-    deleteAction(input: $input, condition: $condition) {
-      id
-      action
-      listItem {
-        id
-        title
-        quantity
-        done
-        createdAt
-        updatedAt
-        owner
-        __typename
-      }
-      createdAt
-      updatedAt
+      listListItemsId
+      listItemListId
       owner
       __typename
     }
